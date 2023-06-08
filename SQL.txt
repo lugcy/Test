@@ -1,0 +1,74 @@
+createdb nomb_base -> créer une base de donnée
+dropdb nom_base -> supprimer base de donnée
+
+#################### Commandes importantes ####################
+
+NOT NULL 					-> l'élément ne peut pas être null
+AUTO_INCREMENT  				-> ajoute +1 par rapport à l'élément d'avant
+PRIMARY KEY					-> identifiant permettant d'identifier un objet
+DEFAULT var					-> valeur par defaut de la variables (si champ non renseigné)
+SHOW COLUMNS FROM var				-> affiche la table var (colonnes et lignes)
+INSERT INTO var1 VALUES var2			-> insertion dans la table var1 les valeurs var2
+`table` != 'var'				-> `nom de table ou champ SQL` & 'valeur d'un char'
+SELECT * FROM table				-> sélectionner tout depuis une table
+SELECT `v1`, `v2` FROM table			-> sélectionner deux colonnes depuis une table
+UPDATE table SET `email` = 'email' WHERE id=x	-> modifie une ligne du tableau
+DELETE FROM table WHERE id=x			-> supprime la ligne dont l'id est =x
+DELETE FROM table				-> supprime tous les objets de la table
+DROP TABLE table				-> supprime la table
+DROP DATABASE base				-> supprime la base
+SELECT * FROM table WHERE var LIKE "%blabla"	-> selectionne tous les objets qui contiennent dans le champ var "blabla"
+SELECT * FROM table ORDER BY var ASC/DESC 	-> trie par ordre croissant (ASC) ou decroissant (DESC)
+SELECT COUNT(var) FROM table			-> compte le nombre d'élémement
+SELECT (DISTINCT var) FROM table		-> compte le nombre d'élément dont les noms sont distincts
+AVG/SUM/MAX/MIN					-> moyenne / somme / maximum / minimum  de la colonne selectionnée
+SELECT var AS "name"				-> change le nom de sortie des colonnes selectionnée
+ROUND						-> arrondi un résultat
+CREATE VIEW nom_vw AS(fonction)			-> créer une variable avec les données selectionnées (convention n_vw)
+JOIN var ON selec				-> créer un lien entre les éléments selon une variable
+
+
+
+#################### Création d'une base de donnée et de tables ####################
+
+CREATE DATABASE foodly
+USE foodly
+SHOW DATABASE foodly
+
+CREATE TABLE user(
+	id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nom VARCHAR(100),
+	prenom VARCHAR(100),
+	email VARCHAR(255) NOT NULL UNIQUE
+);
+
+
+CREATE TABLE food(
+	id INTEGER NOT NUL AUTO_INCREMENT PRIMARY KEY,
+	nom VARCHAR(100) NOT NULL,
+	marque VARCHAR(100),
+	sucre FLOAT,
+	calories INTEGER NOT NULL,
+	graisses FLOAT,
+	proteines FLOAT,
+	bio BOOLEAN DEFAULT false
+);
+
+
+
+
+#################### Remplissage d'une table ####################
+Opérations CRUD :	> C -> create
+			> R -> read
+			> U -> update
+			> D -> delete
+
+INSERT INTO `user` (`nom`, `prenom`, `email`) VALUES ('Lugagne', 'Cyprien', 'cyprien.lugagnedelpon@gmail.com');
+
+INSERT INTO `user` (`nom`, `prenom`, `email`) 
+VALUES 
+('Lugagne', 'Cyprien', 'cyprien.lugagnedelpon@gmail.com'), 
+('Lugagne', 'Guilhem', 'guilhem.lugagnedelpon@gmail.com');
+
+
+
